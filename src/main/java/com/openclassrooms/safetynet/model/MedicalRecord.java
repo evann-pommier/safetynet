@@ -2,13 +2,4 @@ package com.openclassrooms.safetynet.model;
 
 import java.util.List;
 
-import lombok.Data;
-
-@Data
-public class MedicalRecord {
-	private String firstName;
-    private String lastName;
-    private String birthdate;
-    private List<String> medications;
-    private List<String> allergies;
-}
+public record MedicalRecord(String firstName, String lastName, String birthdate, List<String> medications, List<String> allergies) {}

@@ -25,26 +25,26 @@ public class FirestationService {
         log.debug("Getting persons for station {}", stationNumber);
 
         List<String> addresses = dataService.getFirestations().stream()
-                .filter(s -> Integer.parseInt(s.getStation()) == stationNumber)
-                .map(Firestation::getAddress)
+                .filter(s -> Integer.parseInt(s.station()) == stationNumber)
+                .map(Firestation::address)
                 .toList();
 
         List<Person> coveredPersons = dataService.getPersons().stream()
-                .filter(p -> addresses.contains(p.getAddress()))
+                .filter(p -> addresses.contains(p.address()))
                 .toList();
 
         List<PersonResponse> persons = coveredPersons.stream()
-                .map(p -> new PersonResponse(p.getFirstName(), p.getLastName(), p.getAddress(), p.getPhone()))
+                .map(p -> new PersonResponse(p.firstName(), p.lastName(), p.address(), p.phone()))
                 .collect(Collectors.toList());
 
         int adultCount = (int) coveredPersons.stream()
                 .filter(p -> {
                     int age = AgeCalculator.calculateAge(
                             dataService.getMedicalRecords().stream()
-                                    .filter(m -> m.getFirstName().equals(p.getFirstName()) &&
-                                                 m.getLastName().equals(p.getLastName()))
+                                    .filter(m -> m.firstName().equals(p.firstName()) &&
+                                                 m.lastName().equals(p.lastName()))
                                     .findFirst()
-                                    .map(m -> m.getBirthdate())
+                                    .map(m -> m.birthdate())
                                     .orElse("01/01/1900")
                     );
                     return age > 18;
