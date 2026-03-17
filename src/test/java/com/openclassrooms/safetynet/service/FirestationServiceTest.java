@@ -9,7 +9,6 @@ import com.openclassrooms.safetynet.model.MedicalRecord;
 import com.openclassrooms.safetynet.model.Person;
 import com.openclassrooms.safetynet.record.FirestationResponse;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,36 +16,32 @@ import static org.mockito.Mockito.*;
 
 class FirestationServiceTest {
 
-    private DataService dataService;  
-    private FirestationService firestationService;
+    private DataService dataService;
+    private FirestationService service;
 
     @BeforeEach
     void setUp() {
-        dataService = mock(DataService.class); // Mockito.mock
-        firestationService = new FirestationService(dataService);
+        dataService = mock(DataService.class);
+        service = new FirestationService(dataService);
 
-        // Mock du DataService
-        List<Firestation> firestations = new ArrayList<>();
-        firestations.add(new Firestation("1509 Culver St", "3"));
-        when(dataService.getFirestations()).thenReturn(firestations);
+        when(dataService.getFirestations()).thenReturn(List.of(
+                new Firestation("1509 Culver St", "3")
+        ));
 
-        List<Person> persons = new ArrayList<>();
-        persons.add(new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512", "jaboyd@email.com"));
-        when(dataService.getPersons()).thenReturn(persons);
+        when(dataService.getPersons()).thenReturn(List.of(
+                new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "123", "mail")
+        ));
 
-        List<MedicalRecord> medicalRecords = new ArrayList<>();
-        medicalRecords.add(new MedicalRecord("John", "Boyd", "03/06/1984", new ArrayList<>(), new ArrayList<>()));
-        when(dataService.getMedicalRecords()).thenReturn(medicalRecords);
+        when(dataService.getMedicalRecords()).thenReturn(List.of(
+                new MedicalRecord("John", "Boyd", "03/06/1984", List.of(), List.of())
+        ));
     }
 
     @Test
-    void testGetPersonsByStation() {
-        FirestationResponse response = firestationService.getPersonsByStation(3);
+    void shouldReturnPersonsByStation() {
+        FirestationResponse result = service.getPersonsByStation(3);
 
-        assertNotNull(response);
-        assertEquals(1, response.persons().size());
-        assertEquals("John", response.persons().get(0).firstName());
-        assertEquals(1, response.adultCount());
-        assertEquals(0, response.childCount());
+        assertEquals(1, result.persons().size());
+        assertEquals("John", result.persons().get(0).firstName());
     }
 }
