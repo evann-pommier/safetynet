@@ -1,7 +1,6 @@
 package com.openclassrooms.safetynet.service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -20,6 +19,18 @@ public class ChildAlertService {
 
     private final DataService dataService;
 
+    
+    private int getAge(Person p) {
+        return AgeCalculator.calculateAge(
+            dataService.getMedicalRecords().stream()
+                .filter(m -> m.firstName().equals(p.firstName()) &&
+                             m.lastName().equals(p.lastName()))
+                .findFirst()
+                .map(m -> m.birthdate())
+                .orElse("01/01/1900")
+        );
+    }
+    
     public List<ChildAlertResponse> getChildrenByAddress(String address) {
         log.debug("Getting children for address {}", address);
 
@@ -28,33 +39,13 @@ public class ChildAlertService {
                 .toList();
 
         return residents.stream()
-                .filter(p -> {
-                    int age = AgeCalculator.calculateAge(
-                            dataService.getMedicalRecords().stream()
-                                    .filter(m -> m.firstName().equals(p.firstName()) &&
-                                                 m.lastName().equals(p.lastName()))
-                                    .findFirst()
-                                    .map(m -> m.birthdate())
-                                    .orElse("01/01/1900")
-                    );
-                    return age <= 18;
-                })
+                .filter(p -> getAge(p) <= 18)
                 .map(p -> {
                     List<PersonResponse> household = residents.stream()
                             .filter(o -> !o.equals(p))
-                            .map(o -> new PersonResponse(o.firstName(), o.firstName(), o.address(), o.phone()))
-                            .collect(Collectors.toList());
-
-                    int age = AgeCalculator.calculateAge(
-                            dataService.getMedicalRecords().stream()
-                                    .filter(m -> m.firstName().equals(p.firstName()) &&
-                                                 m.firstName().equals(p.firstName()))
-                                    .findFirst()
-                                    .map(m -> m.birthdate())
-                                    .orElse("01/01/1900")
-                    );
-
-                    return new ChildAlertResponse(p.firstName(), p.firstName(), age, household);
+                            .map(o -> new PersonResponse(o.firstName(), o.lastName(), o.address(), o.phone()))
+                            .toList();
+                    return new ChildAlertResponse(p.firstName(), p.lastName(), getAge(p), household);
                 })
                 .toList();
     }

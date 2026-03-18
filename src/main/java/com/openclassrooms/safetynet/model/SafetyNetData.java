@@ -7,5 +7,5 @@ import lombok.Data;
 public class SafetyNetData {
 	private List<Person> persons;
     private List<Firestation> firestations;
-    private List<MedicalRecord> medicalrecords;
+    private List<MedicalRecord> medicalRecords;
 }

@@ -1,3 +1,14 @@
 package com.openclassrooms.safetynet.model;
 
-public record Person(String firstName, String lastName, String address, String city, String zip, String phone, String email) {}
+import jakarta.validation.constraints.NotNull;
+
+public record Person(
+		@NotNull(message = "Le prenom ne peut pas etre nul") String firstName, 
+		@NotNull String lastName, 
+		@NotNull String address, 
+		@NotNull String city, 
+		@NotNull String zip, 
+		@NotNull String phone, 
+		@NotNull String email
+		
+		) {}

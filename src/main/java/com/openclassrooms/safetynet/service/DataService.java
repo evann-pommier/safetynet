@@ -10,8 +10,8 @@ import com.openclassrooms.safetynet.model.Person;
 import com.openclassrooms.safetynet.model.Firestation;
 import com.openclassrooms.safetynet.model.MedicalRecord;
 import org.springframework.stereotype.Service;
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 @Service
@@ -22,9 +22,15 @@ public class DataService {
 
 	@PostConstruct
 	public void loadData() throws IOException {
-		ObjectMapper mapper = new ObjectMapper();
-		data = mapper.readValue(new File("data.json"), SafetyNetData.class);
-		log.info("JSON data loaded successfully.");
+	    ObjectMapper mapper = new ObjectMapper();
+	    InputStream is = getClass().getClassLoader().getResourceAsStream("data.json");
+
+	    if (is == null) {
+	        throw new RuntimeException("data.json not found in resources folder");
+	    }
+
+	    this.data = mapper.readValue(is, SafetyNetData.class);
+	    log.info("JSON data loaded successfully.");
 	}
 
 	public List<Person> getPersons() {
@@ -36,7 +42,7 @@ public class DataService {
 	}
 
 	public List<MedicalRecord> getMedicalRecords() {
-		return data.getMedicalrecords();
+		return data.getMedicalRecords();
 	}
 
 }

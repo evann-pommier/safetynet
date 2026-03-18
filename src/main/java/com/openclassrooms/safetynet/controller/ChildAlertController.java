@@ -10,18 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.openclassrooms.safetynet.record.ChildAlertResponse;
 import com.openclassrooms.safetynet.service.ChildAlertService;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/childAlert")
+@RequiredArgsConstructor
 @Slf4j
 public class ChildAlertController {
 
     private final ChildAlertService childAlertService;
-    
-    public ChildAlertController(ChildAlertService childAlertService) {
-    	this.childAlertService = childAlertService;
-    }
 
     @GetMapping
     public List<ChildAlertResponse> getChildrenByAddress(@RequestParam String address) {
