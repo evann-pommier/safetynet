@@ -1,7 +1,7 @@
 package com.openclassrooms.safetynet.controller;
 
-import com.openclassrooms.safetynet.record.ChildAlertResponse;
-import com.openclassrooms.safetynet.service.ChildAlertService;
+import com.openclassrooms.safetynet.record.PersonInfoResponse;
+import com.openclassrooms.safetynet.service.PersonInfoService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -14,30 +14,32 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(ChildAlertController.class)
-class ChildAlertControllerTest {
+@WebMvcTest(PersonInfoController.class)
+class PersonInfoControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
-    private ChildAlertService childAlertService;
+    private PersonInfoService service;
 
     @Test
-    void getChildrenByAddress_shouldReturn200() throws Exception {
-        when(childAlertService.getChildrenByAddress("1509 Culver St"))
-            .thenReturn(List.of(new ChildAlertResponse("Tenley", "Boyd", 10, List.of())));
+    void getInfo_shouldReturn200() throws Exception {
+        when(service.getByLastName("Boyd"))
+            .thenReturn(List.of(new PersonInfoResponse("John", "Boyd",
+                    "1509 Culver St", 40, "john@email.com",
+                    List.of("aznol:350mg"), List.of("nillacilan"))));
 
-        mockMvc.perform(get("/childAlert").param("address", "1509 Culver St"))
+        mockMvc.perform(get("/personInfo").param("lastName", "Boyd"))
                .andExpect(status().isOk());
     }
 
     @Test
-    void getChildrenByAddress_shouldReturnEmptyList_whenNoChildren() throws Exception {
-        when(childAlertService.getChildrenByAddress("Unknown St"))
+    void getInfo_shouldReturnEmptyList_whenNoMatch() throws Exception {
+        when(service.getByLastName("Unknown"))
             .thenReturn(List.of());
 
-        mockMvc.perform(get("/childAlert").param("address", "Unknown St"))
+        mockMvc.perform(get("/personInfo").param("lastName", "Unknown"))
                .andExpect(status().isOk())
                .andExpect(content().json("[]"));
     }

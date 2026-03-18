@@ -1,7 +1,6 @@
 package com.openclassrooms.safetynet.controller;
 
-import com.openclassrooms.safetynet.record.ChildAlertResponse;
-import com.openclassrooms.safetynet.service.ChildAlertService;
+import com.openclassrooms.safetynet.service.PhoneAlertService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -14,30 +13,30 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(ChildAlertController.class)
-class ChildAlertControllerTest {
+@WebMvcTest(PhoneAlertController.class)
+class PhoneAlertControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
-    private ChildAlertService childAlertService;
+    private PhoneAlertService service;
 
     @Test
-    void getChildrenByAddress_shouldReturn200() throws Exception {
-        when(childAlertService.getChildrenByAddress("1509 Culver St"))
-            .thenReturn(List.of(new ChildAlertResponse("Tenley", "Boyd", 10, List.of())));
+    void getPhones_shouldReturn200() throws Exception {
+        when(service.getPhonesByStation(3))
+            .thenReturn(List.of("841-874-6512"));
 
-        mockMvc.perform(get("/childAlert").param("address", "1509 Culver St"))
+        mockMvc.perform(get("/phoneAlert").param("firestation", "3"))
                .andExpect(status().isOk());
     }
 
     @Test
-    void getChildrenByAddress_shouldReturnEmptyList_whenNoChildren() throws Exception {
-        when(childAlertService.getChildrenByAddress("Unknown St"))
+    void getPhones_shouldReturnEmptyList_whenNoResidents() throws Exception {
+        when(service.getPhonesByStation(99))
             .thenReturn(List.of());
 
-        mockMvc.perform(get("/childAlert").param("address", "Unknown St"))
+        mockMvc.perform(get("/phoneAlert").param("firestation", "99"))
                .andExpect(status().isOk())
                .andExpect(content().json("[]"));
     }

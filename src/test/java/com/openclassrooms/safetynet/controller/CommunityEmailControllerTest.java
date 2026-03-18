@@ -1,7 +1,6 @@
 package com.openclassrooms.safetynet.controller;
 
-import com.openclassrooms.safetynet.record.ChildAlertResponse;
-import com.openclassrooms.safetynet.service.ChildAlertService;
+import com.openclassrooms.safetynet.service.CommunityEmailService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -14,30 +13,30 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(ChildAlertController.class)
-class ChildAlertControllerTest {
+@WebMvcTest(CommunityEmailController.class)
+class CommunityEmailControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
-    private ChildAlertService childAlertService;
+    private CommunityEmailService service;
 
     @Test
-    void getChildrenByAddress_shouldReturn200() throws Exception {
-        when(childAlertService.getChildrenByAddress("1509 Culver St"))
-            .thenReturn(List.of(new ChildAlertResponse("Tenley", "Boyd", 10, List.of())));
+    void getEmails_shouldReturn200() throws Exception {
+        when(service.getEmailsByCity("Culver"))
+            .thenReturn(List.of("john@email.com", "jacob@email.com"));
 
-        mockMvc.perform(get("/childAlert").param("address", "1509 Culver St"))
+        mockMvc.perform(get("/communityEmail").param("city", "Culver"))
                .andExpect(status().isOk());
     }
 
     @Test
-    void getChildrenByAddress_shouldReturnEmptyList_whenNoChildren() throws Exception {
-        when(childAlertService.getChildrenByAddress("Unknown St"))
+    void getEmails_shouldReturnEmptyList_whenCityNotFound() throws Exception {
+        when(service.getEmailsByCity("Unknown"))
             .thenReturn(List.of());
 
-        mockMvc.perform(get("/childAlert").param("address", "Unknown St"))
+        mockMvc.perform(get("/communityEmail").param("city", "Unknown"))
                .andExpect(status().isOk())
                .andExpect(content().json("[]"));
     }
