@@ -1,6 +1,8 @@
 package com.openclassrooms.safetynet.model;
 
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
 /**
  * Représente une personne recensée dans le système SafetyNet.
@@ -14,11 +16,11 @@ import jakarta.validation.constraints.NotNull;
  * @param email     l'adresse email (obligatoire)
  */
 public record Person(
-        @NotNull(message = "Le prenom ne peut pas etre nul") String firstName,
-        @NotNull String lastName,
-        @NotNull String address,
-        @NotNull String city,
-        @NotNull String zip,
-        @NotNull String phone,
-        @NotNull String email
+        @NotBlank(message = "Le prénom ne peut pas être vide") String firstName,
+        @NotBlank(message = "Le nom ne peut pas être vide") String lastName,
+        @NotBlank(message = "L'adresse ne peut pas être vide") String address,
+        @NotBlank(message = "La ville ne peut pas être vide") String city,
+        @Pattern(regexp = "\\d{5}", message = "Le code postal doit contenir 5 chiffres") String zip,
+        @Pattern(regexp = "\\d{3}-\\d{3}-\\d{4}", message = "Le téléphone doit être au format XXX-XXX-XXXX") String phone,
+        @Email(message = "L'adresse email n'est pas valide") @NotBlank(message = "L'email ne peut pas être vide") String email
 ) {}

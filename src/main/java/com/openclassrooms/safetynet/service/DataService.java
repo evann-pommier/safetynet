@@ -8,6 +8,7 @@ import com.openclassrooms.safetynet.model.SafetyNetData;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.List;
  */
 @Service
 @Slf4j
-public class DataService {
+public class DataService implements IDataService {
 
     private SafetyNetData data;
 
@@ -41,28 +42,25 @@ public class DataService {
     }
 
     /**
-     * Retourne la liste des personnes.
-     *
-     * @return liste mutable de {@link Person}
+     * {@inheritDoc}
      */
+    @Override
     public List<Person> getPersons() {
         return data.getPersons();
     }
 
     /**
-     * Retourne la liste des mappings adresse/caserne.
-     *
-     * @return liste mutable de {@link Firestation}
+     * {@inheritDoc}
      */
+    @Override
     public List<Firestation> getFirestations() {
         return data.getFirestations();
     }
 
     /**
-     * Retourne la liste des dossiers médicaux.
-     *
-     * @return liste mutable de {@link MedicalRecord}
+     * {@inheritDoc}
      */
+    @Override
     public List<MedicalRecord> getMedicalRecords() {
         return data.getMedicalRecords();
     }

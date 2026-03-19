@@ -19,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ChildAlertService {
 
-    private final DataService dataService;
+    private final IDataService dataService;
 
     /**
      * Calcule l'âge d'une personne à partir de son dossier médical.

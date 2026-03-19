@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.openclassrooms.safetynet.model.Firestation;
 import com.openclassrooms.safetynet.record.FirestationResponse;
 import com.openclassrooms.safetynet.service.FirestationService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -39,7 +40,11 @@ public class FirestationController {
     @GetMapping
     public ResponseEntity<FirestationResponse> getPersonsByStation(@RequestParam int stationNumber) {
         log.info("GET /firestation called with stationNumber={}", stationNumber);
+        log.debug("Delegating to firestationService.getPersonsByStation({})", stationNumber);
         FirestationResponse response = firestationService.getPersonsByStation(stationNumber);
+        log.debug("firestationService returned {} persons, {} adults, {} children",
+                response.persons().size(), response.adultCount(), response.childCount());
+        log.info("Response returned for stationNumber={}: {} persons found", stationNumber, response.persons().size());
         return ResponseEntity.ok(response);
     }
 
@@ -50,8 +55,9 @@ public class FirestationController {
      * @return 201 si ajouté, 409 si le mapping existe déjà
      */
     @PostMapping
-    public ResponseEntity<String> addMapping(@RequestBody Firestation firestation) {
+    public ResponseEntity<String> addMapping(@Valid @RequestBody Firestation firestation) {
         log.info("POST /firestation called with: {}", firestation);
+        log.debug("Delegating to firestationService.addMapping({})", firestation);
         boolean added = firestationService.addMapping(firestation);
         if (added) {
             log.info("Mapping added successfully: {}", firestation);
@@ -69,8 +75,9 @@ public class FirestationController {
      * @return 200 si mis à jour, 404 si le mapping n'existe pas
      */
     @PutMapping
-    public ResponseEntity<String> updateMapping(@RequestBody Firestation firestation) {
+    public ResponseEntity<String> updateMapping(@Valid @RequestBody Firestation firestation) {
         log.info("PUT /firestation called with: {}", firestation);
+        log.debug("Delegating to firestationService.updateMapping({})", firestation);
         boolean updated = firestationService.updateMapping(firestation);
         if (updated) {
             log.info("Mapping updated successfully: {}", firestation);
@@ -91,8 +98,13 @@ public class FirestationController {
     @DeleteMapping
     public ResponseEntity<String> deleteMapping(@RequestParam String address, @RequestParam String station) {
         log.info("DELETE /firestation called for address: {} station: {}", address, station);
+        log.debug("Delegating to firestationService.deleteMapping({}, {})", address, station);
         boolean deleted = firestationService.deleteMapping(address, station);
-        if (deleted) return ResponseEntity.ok("Mapping deleted");
+        if (deleted) {
+            log.info("Mapping deleted successfully for address: {} station: {}", address, station);
+            return ResponseEntity.ok("Mapping deleted");
+        }
+        log.warn("Mapping not found for address: {} station: {}", address, station);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Mapping not found");
     }
 }

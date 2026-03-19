@@ -30,6 +30,10 @@ public class CommunityEmailController {
     @GetMapping
     public List<String> getEmails(@RequestParam String city) {
         log.info("Requête emails pour la ville {}", city);
-        return service.getEmailsByCity(city);
+        log.debug("Delegating to communityEmailService.getEmailsByCity({})", city);
+        List<String> emails = service.getEmailsByCity(city);
+        log.debug("communityEmailService returned {} emails", emails.size());
+        log.info("{} emails trouvés pour la ville {}", emails.size(), city);
+        return emails;
     }
 }

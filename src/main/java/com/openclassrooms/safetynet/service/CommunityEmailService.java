@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CommunityEmailService {
 
-    private final DataService dataService;
+    private final IDataService dataService;
 
     /**
      * Retourne la liste des adresses email de tous les habitants de la ville donnée,

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.openclassrooms.safetynet.service.MedicalRecordService;
+import jakarta.validation.Valid;
 import com.openclassrooms.safetynet.model.MedicalRecord;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -37,7 +38,11 @@ public class MedicalRecordController {
     @GetMapping
     public List<MedicalRecord> getAll() {
         log.info("GET /medicalRecord called");
-        return service.getAllMedicalRecords();
+        log.debug("Delegating to medicalRecordService.getAllMedicalRecords()");
+        List<MedicalRecord> records = service.getAllMedicalRecords();
+        log.debug("medicalRecordService returned {} records", records.size());
+        log.info("Response returned: {} medical records found", records.size());
+        return records;
     }
 
     /**
@@ -47,9 +52,11 @@ public class MedicalRecordController {
      * @return 201 si ajouté avec succès
      */
     @PostMapping
-    public ResponseEntity<String> add(@RequestBody MedicalRecord record) {
+    public ResponseEntity<String> add(@Valid @RequestBody MedicalRecord record) {
         log.info("POST /medicalRecord called for {} {}", record.firstName(), record.lastName());
+        log.debug("Delegating to medicalRecordService.addMedicalRecord({})", record);
         service.addMedicalRecord(record);
+        log.info("Medical record added successfully for {} {}", record.firstName(), record.lastName());
         return ResponseEntity.status(HttpStatus.CREATED).body("Medical record added");
     }
 
@@ -61,10 +68,15 @@ public class MedicalRecordController {
      * @return 200 si mis à jour, 404 si le dossier n'existe pas
      */
     @PutMapping
-    public ResponseEntity<String> update(@RequestBody MedicalRecord record) {
+    public ResponseEntity<String> update(@Valid @RequestBody MedicalRecord record) {
         log.info("PUT /medicalRecord called for {} {}", record.firstName(), record.lastName());
+        log.debug("Delegating to medicalRecordService.updateMedicalRecord({})", record);
         boolean updated = service.updateMedicalRecord(record);
-        if (!updated) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Medical record not found");
+        if (!updated) {
+            log.warn("Medical record not found for {} {}", record.firstName(), record.lastName());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Medical record not found");
+        }
+        log.info("Medical record updated successfully for {} {}", record.firstName(), record.lastName());
         return ResponseEntity.ok("Medical record updated");
     }
 
@@ -78,8 +90,13 @@ public class MedicalRecordController {
     @DeleteMapping
     public ResponseEntity<String> delete(@RequestParam String firstName, @RequestParam String lastName) {
         log.info("DELETE /medicalRecord called for {} {}", firstName, lastName);
+        log.debug("Delegating to medicalRecordService.deleteMedicalRecord({}, {})", firstName, lastName);
         boolean deleted = service.deleteMedicalRecord(firstName, lastName);
-        if (!deleted) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Medical record not found");
+        if (!deleted) {
+            log.warn("Medical record not found for {} {}", firstName, lastName);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Medical record not found");
+        }
+        log.info("Medical record deleted successfully for {} {}", firstName, lastName);
         return ResponseEntity.ok("Medical record deleted");
     }
 }

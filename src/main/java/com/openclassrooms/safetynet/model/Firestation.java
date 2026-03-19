@@ -1,5 +1,8 @@
 package com.openclassrooms.safetynet.model;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+
 /**
  * Représente le mapping entre une adresse et le numéro de la caserne de pompiers
  * qui la dessert.
@@ -7,4 +10,7 @@ package com.openclassrooms.safetynet.model;
  * @param address l'adresse couverte
  * @param station le numéro de la caserne de pompiers
  */
-public record Firestation(String address, String station) {}
+public record Firestation(
+        @NotBlank(message = "L'adresse ne peut pas être vide") String address,
+        @Pattern(regexp = "\\d+", message = "Le numéro de caserne doit être un entier positif") String station
+) {}

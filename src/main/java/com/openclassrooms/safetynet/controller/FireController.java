@@ -34,6 +34,10 @@ public class FireController {
     @GetMapping
     public List<FireResponse> getFireInfo(@RequestParam String address) {
         log.info("Request fire info for {}", address);
-        return service.getFireInfoByAddress(address);
+        log.debug("Delegating to fireService.getFireInfoByAddress({})", address);
+        List<FireResponse> response = service.getFireInfoByAddress(address);
+        log.debug("fireService returned {} residents", response.size());
+        log.info("Response returned: {} residents found for address {}", response.size(), address);
+        return response;
     }
 }

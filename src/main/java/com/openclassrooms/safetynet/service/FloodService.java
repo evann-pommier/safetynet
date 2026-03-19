@@ -24,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class FloodService {
 
-    private final DataService dataService;
+    private final IDataService dataService;
 
     /**
      * Retourne tous les foyers desservis par les casernes données,

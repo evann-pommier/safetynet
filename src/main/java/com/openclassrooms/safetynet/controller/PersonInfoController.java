@@ -34,6 +34,10 @@ public class PersonInfoController {
     @GetMapping
     public List<PersonInfoResponse> getInfo(@RequestParam String lastName) {
         log.info("Request person info for lastName={}", lastName);
-        return service.getByLastName(lastName);
+        log.debug("Delegating to personInfoService.getByLastName({})", lastName);
+        List<PersonInfoResponse> response = service.getByLastName(lastName);
+        log.debug("personInfoService returned {} results", response.size());
+        log.info("Response returned: {} persons found for lastName={}", response.size(), lastName);
+        return response;
     }
 }

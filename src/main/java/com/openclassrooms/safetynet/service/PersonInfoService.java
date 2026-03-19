@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class PersonInfoService {
 
-    private final DataService dataService;
+    private final IDataService dataService;
 
     /**
      * Retourne les informations détaillées de toutes les personnes

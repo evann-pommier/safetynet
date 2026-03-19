@@ -17,7 +17,7 @@ import com.openclassrooms.safetynet.util.AgeCalculator;
 @RequiredArgsConstructor
 public class FireService {
 
-    private final DataService dataService;
+    private final IDataService dataService;
 
     /**
      * Retourne la liste des habitants vivant à l'adresse donnée,

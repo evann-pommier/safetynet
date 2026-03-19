@@ -33,6 +33,10 @@ public class FloodController {
     @GetMapping("/stations")
     public FloodResponse getFlood(@RequestParam List<Integer> stations) {
         log.info("Request flood for stations {}", stations);
-        return floodService.getFloodByStations(stations);
+        log.debug("Delegating to floodService.getFloodByStations({})", stations);
+        FloodResponse response = floodService.getFloodByStations(stations);
+        log.debug("floodService returned {} households", response.households().size());
+        log.info("Response returned: {} households found for stations {}", response.households().size(), stations);
+        return response;
     }
 }

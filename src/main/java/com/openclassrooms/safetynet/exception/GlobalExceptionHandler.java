@@ -22,7 +22,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<String> handleIllegalArgument(IllegalArgumentException e) {
-        log.warn("Invalid argument: {}", e.getMessage());
+        log.error("Invalid argument: {}", e.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
 
@@ -34,7 +34,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(NumberFormatException.class)
     public ResponseEntity<String> handleNumberFormat(NumberFormatException e) {
-        log.warn("Number format error: {}", e.getMessage());
+        log.error("Number format error: {}", e.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid number format");
     }
 

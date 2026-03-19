@@ -38,7 +38,11 @@ public class PersonController {
     @GetMapping
     public ResponseEntity<List<Person>> getAllPersons() {
         log.info("GET /person called");
-        return ResponseEntity.ok(personService.getAllPersons());
+        log.debug("Delegating to personService.getAllPersons()");
+        List<Person> persons = personService.getAllPersons();
+        log.debug("personService returned {} persons", persons.size());
+        log.info("Response returned: {} persons found", persons.size());
+        return ResponseEntity.ok(persons);
     }
 
     /**
@@ -51,8 +55,13 @@ public class PersonController {
     @PostMapping
     public ResponseEntity<String> addPerson(@Valid @RequestBody Person person) {
         log.info("POST /person called with: {}", person);
+        log.debug("Delegating to personService.addPerson({})", person);
         boolean added = personService.addPerson(person);
-        if (!added) return ResponseEntity.status(HttpStatus.CONFLICT).body("Person already exists");
+        if (!added) {
+            log.warn("Person already exists: {} {}", person.firstName(), person.lastName());
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Person already exists");
+        }
+        log.info("Person added successfully: {} {}", person.firstName(), person.lastName());
         return ResponseEntity.status(HttpStatus.CREATED).body("Person added");
     }
 
@@ -64,10 +73,15 @@ public class PersonController {
      * @return 200 si mise à jour, 404 si la personne n'existe pas
      */
     @PutMapping
-    public ResponseEntity<String> updatePerson(@RequestBody Person person) {
+    public ResponseEntity<String> updatePerson(@Valid @RequestBody Person person) {
         log.info("PUT /person called with: {}", person);
+        log.debug("Delegating to personService.updatePerson({})", person);
         boolean updated = personService.updatePerson(person);
-        if (!updated) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Person not found");
+        if (!updated) {
+            log.warn("Person not found: {} {}", person.firstName(), person.lastName());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Person not found");
+        }
+        log.info("Person updated successfully: {} {}", person.firstName(), person.lastName());
         return ResponseEntity.ok("Person updated");
     }
 
@@ -81,8 +95,13 @@ public class PersonController {
     @DeleteMapping
     public ResponseEntity<String> deletePerson(@RequestParam String firstName, @RequestParam String lastName) {
         log.info("DELETE /person called for {} {}", firstName, lastName);
+        log.debug("Delegating to personService.deletePerson({}, {})", firstName, lastName);
         boolean deleted = personService.deletePerson(firstName, lastName);
-        if (!deleted) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Person not found");
+        if (!deleted) {
+            log.warn("Person not found: {} {}", firstName, lastName);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Person not found");
+        }
+        log.info("Person deleted successfully: {} {}", firstName, lastName);
         return ResponseEntity.ok("Person deleted");
     }
 }

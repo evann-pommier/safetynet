@@ -32,6 +32,10 @@ public class PhoneAlertController {
     @GetMapping
     public List<String> getPhones(@RequestParam int firestation) {
         log.info("Request phoneAlert for station {}", firestation);
-        return service.getPhonesByStation(firestation);
+        log.debug("Delegating to phoneAlertService.getPhonesByStation({})", firestation);
+        List<String> phones = service.getPhonesByStation(firestation);
+        log.debug("phoneAlertService returned {} phone numbers", phones.size());
+        log.info("Response returned: {} phones found for station {}", phones.size(), firestation);
+        return phones;
     }
 }

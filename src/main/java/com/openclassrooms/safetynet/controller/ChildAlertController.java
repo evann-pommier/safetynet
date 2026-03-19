@@ -33,7 +33,9 @@ public class ChildAlertController {
     @GetMapping
     public List<ChildAlertResponse> getChildrenByAddress(@RequestParam String address) {
         log.info("Request received for /childAlert with address: {}", address);
+        log.debug("Delegating to childAlertService.getChildrenByAddress({})", address);
         List<ChildAlertResponse> response = childAlertService.getChildrenByAddress(address);
+        log.debug("childAlertService returned {} results", response.size());
         log.info("Response returned: {} children found", response.size());
         return response;
     }
