@@ -1,5 +1,6 @@
 package com.openclassrooms.safetynet.service;
 
+import java.io.IOException;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import com.openclassrooms.safetynet.model.Firestation;
@@ -82,6 +83,7 @@ public class FirestationService {
             return false;
         }
         dataService.getFirestations().add(firestation);
+        save();
         log.info("Mapping added: {}", firestation);
         return true;
     }
@@ -99,6 +101,7 @@ public class FirestationService {
         );
         if (removed) {
             dataService.getFirestations().add(firestation);
+            save();
             log.info("Mapping updated: {}", firestation);
         } else {
             log.warn("Mapping not found: {}", firestation);
@@ -118,10 +121,19 @@ public class FirestationService {
             f.address().equals(address) && f.station().equals(station)
         );
         if (deleted) {
+        	save();
             log.info("Mapping deleted for address {} station {}", address, station);
         } else {
             log.warn("Mapping not found for address {} station {}", address, station);
         }
         return deleted;
+    }
+    
+    private void save() {
+        try {
+            dataService.saveData();
+        } catch (IOException e) {
+            log.error("Failed to save data: {}", e.getMessage());
+        }
     }
 }

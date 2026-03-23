@@ -1,6 +1,8 @@
 # SafetyNet Alert System
 
-Application REST développée avec Spring Boot permettant de gérer les alertes de sécurité civile. Elle expose des endpoints pour informer les services de secours sur les habitants d'une zone, leurs informations médicales et les casernes de pompiers les desservant.
+Application REST développée avec Spring Boot permettant de gérer les alertes de sécurité civile.
+Elle expose des endpoints pour informer les services de secours sur les habitants d'une zone,
+leurs informations médicales et les casernes de pompiers les desservant.
 
 ---
 
@@ -19,8 +21,10 @@ mvn spring-boot:run
 L'application démarre sur `http://localhost:8080`.
 
 Les données sont chargées automatiquement depuis `src/main/resources/data.json` au démarrage.
+Toute modification via les endpoints POST, PUT ou DELETE est **sauvegardée dans ce fichier**.
 
-> ⚠️ Les données sont stockées en mémoire. Toute modification est perdue au redémarrage.
+> ⚠️ La persistance des données fonctionne uniquement en mode développement (`mvn spring-boot:run`).
+> Elle ne fonctionne pas depuis un JAR.
 
 ---
 
@@ -110,12 +114,28 @@ POST /medicalRecord
 mvn test
 ```
 
+Trois niveaux de tests sont couverts :
+- **Tests unitaires** des services avec Mockito — logique métier isolée
+- **Tests contrôleurs** avec `@WebMvcTest` — codes HTTP et routage
+- **Tests d'intégration** avec `@SpringBootTest` — flux complets de bout en bout
+
+> ⚠️ Les tests d'intégration modifient et restaurent les données du fichier `data.json`.
+> Il est recommandé de garder une copie de sauvegarde avant de les exécuter.
+
 #### Rapport de couverture JaCoCo
 ```bash
 mvn verify
 ```
 
 Le rapport est généré dans `target/site/jacoco/index.html`.
+Le build échoue automatiquement si la couverture descend sous **80%**.
+
+#### Rapport Surefire
+```bash
+mvn surefire-report:report
+```
+
+Le rapport est généré dans `target/site/surefire-report.html`.
 
 ---
 
@@ -123,7 +143,7 @@ Le rapport est généré dans `target/site/jacoco/index.html`.
 
 - Java 17 / Spring Boot 3.4.3 / Spring Web MVC
 - Hibernate Validator / Lombok / Jackson
-- JUnit 5 / Mockito / JaCoCo
+- JUnit 5 / Mockito / JaCoCo / Surefire
 
 ---
 
@@ -144,5 +164,6 @@ src/
 └── test/
     └── java/com/openclassrooms/safetynet/
         ├── controller/
-        └── service/
+        ├── service/
+        └── SafetyNetIntegrationTest.java
 ```

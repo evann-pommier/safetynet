@@ -4,30 +4,38 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.openclassrooms.safetynet.model.Firestation;
 import com.openclassrooms.safetynet.model.MedicalRecord;
 import com.openclassrooms.safetynet.model.Person;
+import com.openclassrooms.safetynet.model.SafetyNetData;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.util.ResourceUtils;
 
+import java.io.File;
 import java.util.List;
 
+import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.hamcrest.Matchers.*;
 
 /**
  * Tests d'intégration de l'application SafetyNet.
  * Charge le contexte Spring complet et teste les flux de bout en bout.
- * Les données proviennent du fichier data.json chargé au démarrage.
+ * Les données du fichier data.json sont sauvegardées avant les tests
+ * et restaurées automatiquement après.
  */
 @SpringBootTest
 @AutoConfigureMockMvc
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class SafetyNetIntegrationTest {
 
     @Autowired
@@ -35,6 +43,26 @@ class SafetyNetIntegrationTest {
 
     @Autowired
     private ObjectMapper objectMapper;
+
+    private SafetyNetData originalData;
+
+    /**
+     * Sauvegarde l'état original du fichier data.json avant tous les tests.
+     */
+    @BeforeAll
+    void backupData() throws Exception {
+        File file = ResourceUtils.getFile("classpath:data.json");
+        originalData = objectMapper.readValue(file, SafetyNetData.class);
+    }
+
+    /**
+     * Restaure le fichier data.json dans son état original après tous les tests.
+     */
+    @AfterAll
+    void restoreData() throws Exception {
+        File file = ResourceUtils.getFile("classpath:data.json");
+        objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, originalData);
+    }
 
     // ============================================================
     // TESTS DES ENDPOINTS D'ALERTE

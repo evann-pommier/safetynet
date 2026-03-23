@@ -8,7 +8,9 @@ import com.openclassrooms.safetynet.model.SafetyNetData;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ResourceUtils;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -23,6 +25,7 @@ import java.util.List;
 public class DataService implements IDataService {
 
     private SafetyNetData data;
+    private final ObjectMapper mapper = new ObjectMapper();
 
     /**
      * Charge les données depuis le fichier data.json au démarrage de l'application.
@@ -39,6 +42,18 @@ public class DataService implements IDataService {
         }
         this.data = mapper.readValue(is, SafetyNetData.class);
         log.info("JSON data loaded successfully.");
+    }
+    
+    /**
+     * Sauvegarde l'état actuel des données dans le fichier data.json.
+     * Appelée après chaque opération de modification (POST, PUT, DELETE).
+     *
+     * @throws IOException si le fichier ne peut pas être écrit
+     */
+    public void saveData() throws IOException {
+        File file = ResourceUtils.getFile("classpath:data.json");
+        mapper.writerWithDefaultPrettyPrinter().writeValue(file, data);
+        log.info("JSON data saved successfully.");
     }
 
     /**

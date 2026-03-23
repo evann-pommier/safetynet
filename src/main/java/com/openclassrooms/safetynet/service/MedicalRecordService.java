@@ -1,5 +1,6 @@
 package com.openclassrooms.safetynet.service;
 
+import java.io.IOException;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import com.openclassrooms.safetynet.model.MedicalRecord;
@@ -35,6 +36,7 @@ public class MedicalRecordService {
      */
     public void addMedicalRecord(MedicalRecord record) {
         dataService.getMedicalRecords().add(record);
+        save();
         log.info("Added medical record for {} {}", record.firstName(), record.lastName());
     }
 
@@ -51,6 +53,7 @@ public class MedicalRecordService {
         );
         if (updated) {
             dataService.getMedicalRecords().add(record);
+            save();
             log.info("Updated medical record for {} {}", record.firstName(), record.lastName());
         } else {
             log.warn("Medical record not found for {} {}", record.firstName(), record.lastName());
@@ -70,10 +73,19 @@ public class MedicalRecordService {
             r.firstName().equals(firstName) && r.lastName().equals(lastName)
         );
         if (deleted) {
+            save();
             log.info("Deleted medical record for {} {}", firstName, lastName);
         } else {
             log.warn("Medical record not found for {} {}", firstName, lastName);
         }
         return deleted;
+    }
+    
+    private void save() {
+        try {
+            dataService.saveData();
+        } catch (IOException e) {
+            log.error("Failed to save data: {}", e.getMessage());
+        }
     }
 }

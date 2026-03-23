@@ -4,6 +4,7 @@ import com.openclassrooms.safetynet.model.Firestation;
 import com.openclassrooms.safetynet.model.MedicalRecord;
 import com.openclassrooms.safetynet.model.Person;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -33,4 +34,11 @@ public interface IDataService {
      * @return liste mutable de {@link MedicalRecord}
      */
     List<MedicalRecord> getMedicalRecords();
+    
+    /**
+     * Sauvegarde l'état actuel des données dans le fichier data.json.
+     *
+     * @throws IOException si le fichier ne peut pas être écrit
+     */
+    void saveData() throws IOException;
 }
