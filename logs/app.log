@@ -1,0 +1,257 @@
+18:31:23 INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+18:31:23 INFO  com.openclassrooms.safetynet.SafetynetApplication - Starting SafetynetApplication using Java 17.0.12 with PID 15556 (C:\Users\evann\eclipse-workspace\safetynet\target\classes started by evann in C:\Users\evann\eclipse-workspace\safetynet)
+18:31:23 DEBUG com.openclassrooms.safetynet.SafetynetApplication - Running with Spring Boot v3.3.0, Spring v6.1.8
+18:31:23 INFO  com.openclassrooms.safetynet.SafetynetApplication - No active profile set, falling back to 1 default profile: "default"
+18:31:23 INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+18:31:23 INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+18:31:24 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+18:31:24 INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+18:31:24 INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+18:31:24 INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.24]
+18:31:24 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+18:31:24 INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1318 ms
+18:31:24 INFO  com.openclassrooms.safetynet.service.DataService - JSON data loaded successfully.
+18:31:25 INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+18:31:25 INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+18:31:25 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+18:31:25 INFO  com.openclassrooms.safetynet.SafetynetApplication - Started SafetynetApplication in 2.503 seconds (process running for 3.032)
+18:31:53 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+18:31:53 INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+18:31:53 INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+18:31:53 INFO  com.openclassrooms.safetynet.controller.FirestationController - GET /firestation called with stationNumber=1
+18:31:53 DEBUG com.openclassrooms.safetynet.controller.FirestationController - Delegating to firestationService.getPersonsByStation(1)
+18:31:53 DEBUG com.openclassrooms.safetynet.controller.FirestationController - firestationService returned 6 persons, 5 adults, 1 children
+18:31:53 INFO  com.openclassrooms.safetynet.controller.FirestationController - Response returned for stationNumber=1: 6 persons found
+18:31:53 ERROR com.openclassrooms.safetynet.exception.GlobalExceptionHandler - Unexpected error: No static resource favicon.ico.
+18:31:53 WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+18:31:57 INFO  com.openclassrooms.safetynet.controller.FirestationController - GET /firestation called with stationNumber=2
+18:31:57 DEBUG com.openclassrooms.safetynet.controller.FirestationController - Delegating to firestationService.getPersonsByStation(2)
+18:31:57 DEBUG com.openclassrooms.safetynet.controller.FirestationController - firestationService returned 5 persons, 4 adults, 1 children
+18:31:57 INFO  com.openclassrooms.safetynet.controller.FirestationController - Response returned for stationNumber=2: 5 persons found
+18:31:58 ERROR com.openclassrooms.safetynet.exception.GlobalExceptionHandler - Unexpected error: No static resource favicon.ico.
+18:31:58 WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+18:32:01 INFO  com.openclassrooms.safetynet.controller.FirestationController - GET /firestation called with stationNumber=3
+18:32:01 DEBUG com.openclassrooms.safetynet.controller.FirestationController - Delegating to firestationService.getPersonsByStation(3)
+18:32:01 DEBUG com.openclassrooms.safetynet.controller.FirestationController - firestationService returned 11 persons, 8 adults, 3 children
+18:32:01 INFO  com.openclassrooms.safetynet.controller.FirestationController - Response returned for stationNumber=3: 11 persons found
+18:32:01 ERROR com.openclassrooms.safetynet.exception.GlobalExceptionHandler - Unexpected error: No static resource favicon.ico.
+18:32:01 WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+18:32:07 INFO  com.openclassrooms.safetynet.controller.FirestationController - GET /firestation called with stationNumber=4
+18:32:07 DEBUG com.openclassrooms.safetynet.controller.FirestationController - Delegating to firestationService.getPersonsByStation(4)
+18:32:07 DEBUG com.openclassrooms.safetynet.controller.FirestationController - firestationService returned 4 persons, 4 adults, 0 children
+18:32:07 INFO  com.openclassrooms.safetynet.controller.FirestationController - Response returned for stationNumber=4: 4 persons found
+18:32:07 ERROR com.openclassrooms.safetynet.exception.GlobalExceptionHandler - Unexpected error: No static resource favicon.ico.
+18:32:07 WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+18:32:10 INFO  com.openclassrooms.safetynet.controller.FirestationController - GET /firestation called with stationNumber=5
+18:32:10 DEBUG com.openclassrooms.safetynet.controller.FirestationController - Delegating to firestationService.getPersonsByStation(5)
+18:32:10 DEBUG com.openclassrooms.safetynet.controller.FirestationController - firestationService returned 0 persons, 0 adults, 0 children
+18:32:10 INFO  com.openclassrooms.safetynet.controller.FirestationController - Response returned for stationNumber=5: 0 persons found
+18:32:10 ERROR com.openclassrooms.safetynet.exception.GlobalExceptionHandler - Unexpected error: No static resource favicon.ico.
+18:32:10 WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+18:32:57 INFO  com.openclassrooms.safetynet.controller.ChildAlertController - Request received for /childAlert with address: 29 15th St
+18:32:57 DEBUG com.openclassrooms.safetynet.controller.ChildAlertController - Delegating to childAlertService.getChildrenByAddress(29 15th St)
+18:32:57 DEBUG com.openclassrooms.safetynet.service.ChildAlertService - Getting children for address 29 15th St
+18:32:57 DEBUG com.openclassrooms.safetynet.controller.ChildAlertController - childAlertService returned 0 results
+18:32:57 INFO  com.openclassrooms.safetynet.controller.ChildAlertController - Response returned: 0 children found
+18:32:57 ERROR com.openclassrooms.safetynet.exception.GlobalExceptionHandler - Unexpected error: No static resource favicon.ico.
+18:32:57 WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+18:33:13 INFO  com.openclassrooms.safetynet.controller.ChildAlertController - Request received for /childAlert with address: 908 73rd St
+18:33:13 DEBUG com.openclassrooms.safetynet.controller.ChildAlertController - Delegating to childAlertService.getChildrenByAddress(908 73rd St)
+18:33:13 DEBUG com.openclassrooms.safetynet.service.ChildAlertService - Getting children for address 908 73rd St
+18:33:13 DEBUG com.openclassrooms.safetynet.controller.ChildAlertController - childAlertService returned 0 results
+18:33:13 INFO  com.openclassrooms.safetynet.controller.ChildAlertController - Response returned: 0 children found
+18:33:13 ERROR com.openclassrooms.safetynet.exception.GlobalExceptionHandler - Unexpected error: No static resource favicon.ico.
+18:33:13 WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+18:34:09 INFO  com.openclassrooms.safetynet.controller.ChildAlertController - Request received for /childAlert with address: 908 73rd St
+18:34:09 DEBUG com.openclassrooms.safetynet.controller.ChildAlertController - Delegating to childAlertService.getChildrenByAddress(908 73rd St)
+18:34:09 DEBUG com.openclassrooms.safetynet.service.ChildAlertService - Getting children for address 908 73rd St
+18:34:09 DEBUG com.openclassrooms.safetynet.controller.ChildAlertController - childAlertService returned 0 results
+18:34:09 INFO  com.openclassrooms.safetynet.controller.ChildAlertController - Response returned: 0 children found
+18:34:09 ERROR com.openclassrooms.safetynet.exception.GlobalExceptionHandler - Unexpected error: No static resource favicon.ico.
+18:34:09 WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+18:34:30 INFO  com.openclassrooms.safetynet.controller.ChildAlertController - Request received for /childAlert with address: 1509 Culver St
+18:34:30 DEBUG com.openclassrooms.safetynet.controller.ChildAlertController - Delegating to childAlertService.getChildrenByAddress(1509 Culver St)
+18:34:30 DEBUG com.openclassrooms.safetynet.service.ChildAlertService - Getting children for address 1509 Culver St
+18:34:30 DEBUG com.openclassrooms.safetynet.controller.ChildAlertController - childAlertService returned 2 results
+18:34:30 INFO  com.openclassrooms.safetynet.controller.ChildAlertController - Response returned: 2 children found
+18:34:30 ERROR com.openclassrooms.safetynet.exception.GlobalExceptionHandler - Unexpected error: No static resource favicon.ico.
+18:34:30 WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+18:34:44 INFO  com.openclassrooms.safetynet.controller.ChildAlertController - Request received for /childAlert with address: 29 15th St
+18:34:44 DEBUG com.openclassrooms.safetynet.controller.ChildAlertController - Delegating to childAlertService.getChildrenByAddress(29 15th St)
+18:34:44 DEBUG com.openclassrooms.safetynet.service.ChildAlertService - Getting children for address 29 15th St
+18:34:44 DEBUG com.openclassrooms.safetynet.controller.ChildAlertController - childAlertService returned 0 results
+18:34:44 INFO  com.openclassrooms.safetynet.controller.ChildAlertController - Response returned: 0 children found
+18:34:44 ERROR com.openclassrooms.safetynet.exception.GlobalExceptionHandler - Unexpected error: No static resource favicon.ico.
+18:34:44 WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+18:35:06 INFO  com.openclassrooms.safetynet.controller.ChildAlertController - Request received for /childAlert with address: 834 Binoc Ave
+18:35:06 DEBUG com.openclassrooms.safetynet.controller.ChildAlertController - Delegating to childAlertService.getChildrenByAddress(834 Binoc Ave)
+18:35:06 DEBUG com.openclassrooms.safetynet.service.ChildAlertService - Getting children for address 834 Binoc Ave
+18:35:06 DEBUG com.openclassrooms.safetynet.controller.ChildAlertController - childAlertService returned 1 results
+18:35:06 INFO  com.openclassrooms.safetynet.controller.ChildAlertController - Response returned: 1 children found
+18:35:06 ERROR com.openclassrooms.safetynet.exception.GlobalExceptionHandler - Unexpected error: No static resource favicon.ico.
+18:35:06 WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+18:35:34 INFO  com.openclassrooms.safetynet.controller.PhoneAlertController - Request phoneAlert for station 1
+18:35:34 DEBUG com.openclassrooms.safetynet.controller.PhoneAlertController - Delegating to phoneAlertService.getPhonesByStation(1)
+18:35:34 INFO  com.openclassrooms.safetynet.service.PhoneAlertService - Fetching phones for station 1
+18:35:34 INFO  com.openclassrooms.safetynet.service.PhoneAlertService - Found 4 phones for station 1
+18:35:34 DEBUG com.openclassrooms.safetynet.controller.PhoneAlertController - phoneAlertService returned 4 phone numbers
+18:35:34 INFO  com.openclassrooms.safetynet.controller.PhoneAlertController - Response returned: 4 phones found for station 1
+18:35:34 ERROR com.openclassrooms.safetynet.exception.GlobalExceptionHandler - Unexpected error: No static resource favicon.ico.
+18:35:34 WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+18:35:37 INFO  com.openclassrooms.safetynet.controller.PhoneAlertController - Request phoneAlert for station 2
+18:35:37 DEBUG com.openclassrooms.safetynet.controller.PhoneAlertController - Delegating to phoneAlertService.getPhonesByStation(2)
+18:35:37 INFO  com.openclassrooms.safetynet.service.PhoneAlertService - Fetching phones for station 2
+18:35:37 INFO  com.openclassrooms.safetynet.service.PhoneAlertService - Found 4 phones for station 2
+18:35:37 DEBUG com.openclassrooms.safetynet.controller.PhoneAlertController - phoneAlertService returned 4 phone numbers
+18:35:37 INFO  com.openclassrooms.safetynet.controller.PhoneAlertController - Response returned: 4 phones found for station 2
+18:35:37 ERROR com.openclassrooms.safetynet.exception.GlobalExceptionHandler - Unexpected error: No static resource favicon.ico.
+18:35:37 WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+18:35:39 INFO  com.openclassrooms.safetynet.controller.PhoneAlertController - Request phoneAlert for station 3
+18:35:39 DEBUG com.openclassrooms.safetynet.controller.PhoneAlertController - Delegating to phoneAlertService.getPhonesByStation(3)
+18:35:39 INFO  com.openclassrooms.safetynet.service.PhoneAlertService - Fetching phones for station 3
+18:35:39 INFO  com.openclassrooms.safetynet.service.PhoneAlertService - Found 7 phones for station 3
+18:35:39 DEBUG com.openclassrooms.safetynet.controller.PhoneAlertController - phoneAlertService returned 7 phone numbers
+18:35:39 INFO  com.openclassrooms.safetynet.controller.PhoneAlertController - Response returned: 7 phones found for station 3
+18:35:39 ERROR com.openclassrooms.safetynet.exception.GlobalExceptionHandler - Unexpected error: No static resource favicon.ico.
+18:35:39 WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+18:35:41 INFO  com.openclassrooms.safetynet.controller.PhoneAlertController - Request phoneAlert for station 4
+18:35:41 DEBUG com.openclassrooms.safetynet.controller.PhoneAlertController - Delegating to phoneAlertService.getPhonesByStation(4)
+18:35:41 INFO  com.openclassrooms.safetynet.service.PhoneAlertService - Fetching phones for station 4
+18:35:41 INFO  com.openclassrooms.safetynet.service.PhoneAlertService - Found 4 phones for station 4
+18:35:41 DEBUG com.openclassrooms.safetynet.controller.PhoneAlertController - phoneAlertService returned 4 phone numbers
+18:35:41 INFO  com.openclassrooms.safetynet.controller.PhoneAlertController - Response returned: 4 phones found for station 4
+18:35:41 ERROR com.openclassrooms.safetynet.exception.GlobalExceptionHandler - Unexpected error: No static resource favicon.ico.
+18:35:41 WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+18:35:57 INFO  com.openclassrooms.safetynet.controller.FireController - Request fire info for 1509 Culver St
+18:35:57 DEBUG com.openclassrooms.safetynet.controller.FireController - Delegating to fireService.getFireInfoByAddress(1509 Culver St)
+18:35:57 INFO  com.openclassrooms.safetynet.service.FireService - Fetching fire info for address: 1509 Culver St
+18:35:57 INFO  com.openclassrooms.safetynet.service.FireService - Found 5 residents at address: 1509 Culver St
+18:35:57 DEBUG com.openclassrooms.safetynet.controller.FireController - fireService returned 5 residents
+18:35:57 INFO  com.openclassrooms.safetynet.controller.FireController - Response returned: 5 residents found for address 1509 Culver St
+18:35:57 ERROR com.openclassrooms.safetynet.exception.GlobalExceptionHandler - Unexpected error: No static resource favicon.ico.
+18:35:57 WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+18:36:04 INFO  com.openclassrooms.safetynet.controller.FireController - Request fire info for 29 15th St
+18:36:04 DEBUG com.openclassrooms.safetynet.controller.FireController - Delegating to fireService.getFireInfoByAddress(29 15th St)
+18:36:04 INFO  com.openclassrooms.safetynet.service.FireService - Fetching fire info for address: 29 15th St
+18:36:04 INFO  com.openclassrooms.safetynet.service.FireService - Found 1 residents at address: 29 15th St
+18:36:04 DEBUG com.openclassrooms.safetynet.controller.FireController - fireService returned 1 residents
+18:36:04 INFO  com.openclassrooms.safetynet.controller.FireController - Response returned: 1 residents found for address 29 15th St
+18:36:04 ERROR com.openclassrooms.safetynet.exception.GlobalExceptionHandler - Unexpected error: No static resource favicon.ico.
+18:36:04 WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+18:36:17 INFO  com.openclassrooms.safetynet.controller.FireController - Request fire info for 834 Binoc Ave
+18:36:17 DEBUG com.openclassrooms.safetynet.controller.FireController - Delegating to fireService.getFireInfoByAddress(834 Binoc Ave)
+18:36:17 INFO  com.openclassrooms.safetynet.service.FireService - Fetching fire info for address: 834 Binoc Ave
+18:36:17 INFO  com.openclassrooms.safetynet.service.FireService - Found 1 residents at address: 834 Binoc Ave
+18:36:17 DEBUG com.openclassrooms.safetynet.controller.FireController - fireService returned 1 residents
+18:36:17 INFO  com.openclassrooms.safetynet.controller.FireController - Response returned: 1 residents found for address 834 Binoc Ave
+18:36:17 ERROR com.openclassrooms.safetynet.exception.GlobalExceptionHandler - Unexpected error: No static resource favicon.ico.
+18:36:17 WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+18:36:28 INFO  com.openclassrooms.safetynet.controller.FireController - Request fire info for 644 Gershwin Cir
+18:36:28 DEBUG com.openclassrooms.safetynet.controller.FireController - Delegating to fireService.getFireInfoByAddress(644 Gershwin Cir)
+18:36:28 INFO  com.openclassrooms.safetynet.service.FireService - Fetching fire info for address: 644 Gershwin Cir
+18:36:28 INFO  com.openclassrooms.safetynet.service.FireService - Found 1 residents at address: 644 Gershwin Cir
+18:36:28 DEBUG com.openclassrooms.safetynet.controller.FireController - fireService returned 1 residents
+18:36:28 INFO  com.openclassrooms.safetynet.controller.FireController - Response returned: 1 residents found for address 644 Gershwin Cir
+18:36:28 ERROR com.openclassrooms.safetynet.exception.GlobalExceptionHandler - Unexpected error: No static resource favicon.ico.
+18:36:28 WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+18:36:40 INFO  com.openclassrooms.safetynet.controller.FireController - Request fire info for 748 Townings Dr
+18:36:40 DEBUG com.openclassrooms.safetynet.controller.FireController - Delegating to fireService.getFireInfoByAddress(748 Townings Dr)
+18:36:40 INFO  com.openclassrooms.safetynet.service.FireService - Fetching fire info for address: 748 Townings Dr
+18:36:40 INFO  com.openclassrooms.safetynet.service.FireService - Found 2 residents at address: 748 Townings Dr
+18:36:40 DEBUG com.openclassrooms.safetynet.controller.FireController - fireService returned 2 residents
+18:36:40 INFO  com.openclassrooms.safetynet.controller.FireController - Response returned: 2 residents found for address 748 Townings Dr
+18:36:40 ERROR com.openclassrooms.safetynet.exception.GlobalExceptionHandler - Unexpected error: No static resource favicon.ico.
+18:36:40 WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+18:36:48 INFO  com.openclassrooms.safetynet.controller.FireController - Request fire info for 112 Steppes Pl
+18:36:48 DEBUG com.openclassrooms.safetynet.controller.FireController - Delegating to fireService.getFireInfoByAddress(112 Steppes Pl)
+18:36:48 INFO  com.openclassrooms.safetynet.service.FireService - Fetching fire info for address: 112 Steppes Pl
+18:36:48 INFO  com.openclassrooms.safetynet.service.FireService - Found 3 residents at address: 112 Steppes Pl
+18:36:48 DEBUG com.openclassrooms.safetynet.controller.FireController - fireService returned 3 residents
+18:36:48 INFO  com.openclassrooms.safetynet.controller.FireController - Response returned: 3 residents found for address 112 Steppes Pl
+18:36:48 ERROR com.openclassrooms.safetynet.exception.GlobalExceptionHandler - Unexpected error: No static resource favicon.ico.
+18:36:48 WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+18:37:05 INFO  com.openclassrooms.safetynet.controller.FloodController - Request flood for stations [1, 2]
+18:37:05 DEBUG com.openclassrooms.safetynet.controller.FloodController - Delegating to floodService.getFloodByStations([1, 2])
+18:37:05 DEBUG com.openclassrooms.safetynet.service.FloodService - Fetching households for stations: [1, 2]
+18:37:05 DEBUG com.openclassrooms.safetynet.controller.FloodController - floodService returned 6 households
+18:37:05 INFO  com.openclassrooms.safetynet.controller.FloodController - Response returned: 6 households found for stations [1, 2]
+18:37:05 ERROR com.openclassrooms.safetynet.exception.GlobalExceptionHandler - Unexpected error: No static resource favicon.ico.
+18:37:05 WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+18:37:17 INFO  com.openclassrooms.safetynet.controller.FloodController - Request flood for stations [1, 2]
+18:37:17 DEBUG com.openclassrooms.safetynet.controller.FloodController - Delegating to floodService.getFloodByStations([1, 2])
+18:37:17 DEBUG com.openclassrooms.safetynet.service.FloodService - Fetching households for stations: [1, 2]
+18:37:17 DEBUG com.openclassrooms.safetynet.controller.FloodController - floodService returned 6 households
+18:37:17 INFO  com.openclassrooms.safetynet.controller.FloodController - Response returned: 6 households found for stations [1, 2]
+18:37:17 ERROR com.openclassrooms.safetynet.exception.GlobalExceptionHandler - Unexpected error: No static resource favicon.ico.
+18:37:17 WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+18:37:22 INFO  com.openclassrooms.safetynet.controller.FloodController - Request flood for stations [1, 3]
+18:37:22 DEBUG com.openclassrooms.safetynet.controller.FloodController - Delegating to floodService.getFloodByStations([1, 3])
+18:37:22 DEBUG com.openclassrooms.safetynet.service.FloodService - Fetching households for stations: [1, 3]
+18:37:22 DEBUG com.openclassrooms.safetynet.controller.FloodController - floodService returned 7 households
+18:37:22 INFO  com.openclassrooms.safetynet.controller.FloodController - Response returned: 7 households found for stations [1, 3]
+18:37:22 ERROR com.openclassrooms.safetynet.exception.GlobalExceptionHandler - Unexpected error: No static resource favicon.ico.
+18:37:22 WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+18:37:29 INFO  com.openclassrooms.safetynet.controller.FloodController - Request flood for stations [1, 3, 2]
+18:37:29 DEBUG com.openclassrooms.safetynet.controller.FloodController - Delegating to floodService.getFloodByStations([1, 3, 2])
+18:37:29 DEBUG com.openclassrooms.safetynet.service.FloodService - Fetching households for stations: [1, 3, 2]
+18:37:29 DEBUG com.openclassrooms.safetynet.controller.FloodController - floodService returned 10 households
+18:37:29 INFO  com.openclassrooms.safetynet.controller.FloodController - Response returned: 10 households found for stations [1, 3, 2]
+18:37:29 ERROR com.openclassrooms.safetynet.exception.GlobalExceptionHandler - Unexpected error: No static resource favicon.ico.
+18:37:29 WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+18:37:37 INFO  com.openclassrooms.safetynet.controller.FloodController - Request flood for stations [1]
+18:37:37 DEBUG com.openclassrooms.safetynet.controller.FloodController - Delegating to floodService.getFloodByStations([1])
+18:37:37 DEBUG com.openclassrooms.safetynet.service.FloodService - Fetching households for stations: [1]
+18:37:37 DEBUG com.openclassrooms.safetynet.controller.FloodController - floodService returned 3 households
+18:37:37 INFO  com.openclassrooms.safetynet.controller.FloodController - Response returned: 3 households found for stations [1]
+18:37:37 ERROR com.openclassrooms.safetynet.exception.GlobalExceptionHandler - Unexpected error: No static resource favicon.ico.
+18:37:37 WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+18:38:10 INFO  com.openclassrooms.safetynet.controller.PersonInfoController - Request person info for lastName=Peters
+18:38:10 DEBUG com.openclassrooms.safetynet.controller.PersonInfoController - Delegating to personInfoService.getByLastName(Peters)
+18:38:10 DEBUG com.openclassrooms.safetynet.service.PersonInfoService - Searching persons with lastName=Peters
+18:38:10 DEBUG com.openclassrooms.safetynet.service.PersonInfoService - Processing person: Jamie Peters
+18:38:10 DEBUG com.openclassrooms.safetynet.service.PersonInfoService - Medical data found for Jamie Peters
+18:38:10 DEBUG com.openclassrooms.safetynet.service.PersonInfoService - Processing person: Ron Peters
+18:38:10 DEBUG com.openclassrooms.safetynet.service.PersonInfoService - Medical data found for Ron Peters
+18:38:10 INFO  com.openclassrooms.safetynet.service.PersonInfoService - Found 2 persons for lastName=Peters
+18:38:10 DEBUG com.openclassrooms.safetynet.controller.PersonInfoController - personInfoService returned 2 results
+18:38:10 INFO  com.openclassrooms.safetynet.controller.PersonInfoController - Response returned: 2 persons found for lastName=Peters
+18:38:10 ERROR com.openclassrooms.safetynet.exception.GlobalExceptionHandler - Unexpected error: No static resource favicon.ico.
+18:38:10 WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+18:38:54 INFO  com.openclassrooms.safetynet.controller.CommunityEmailController - Requête emails pour la ville Culver
+18:38:54 DEBUG com.openclassrooms.safetynet.controller.CommunityEmailController - Delegating to communityEmailService.getEmailsByCity(Culver)
+18:38:54 DEBUG com.openclassrooms.safetynet.service.CommunityEmailService - Récupération des emails pour la ville : Culver
+18:38:54 INFO  com.openclassrooms.safetynet.service.CommunityEmailService - 15 emails trouvés pour la ville Culver
+18:38:54 DEBUG com.openclassrooms.safetynet.controller.CommunityEmailController - communityEmailService returned 15 emails
+18:38:54 INFO  com.openclassrooms.safetynet.controller.CommunityEmailController - 15 emails trouvés pour la ville Culver
+18:38:54 ERROR com.openclassrooms.safetynet.exception.GlobalExceptionHandler - Unexpected error: No static resource favicon.ico.
+18:38:54 WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+18:42:29 INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+18:42:29 INFO  com.openclassrooms.safetynet.SafetynetApplication - Starting SafetynetApplication using Java 17.0.12 with PID 24384 (C:\Users\evann\eclipse-workspace\safetynet\target\classes started by evann in C:\Users\evann\eclipse-workspace\safetynet)
+18:42:29 DEBUG com.openclassrooms.safetynet.SafetynetApplication - Running with Spring Boot v3.3.0, Spring v6.1.8
+18:42:29 INFO  com.openclassrooms.safetynet.SafetynetApplication - No active profile set, falling back to 1 default profile: "default"
+18:42:30 INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+18:42:30 INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+18:42:31 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+18:42:31 INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+18:42:31 INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+18:42:31 INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.24]
+18:42:31 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+18:42:31 INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1606 ms
+18:42:31 INFO  com.openclassrooms.safetynet.service.DataService - JSON data loaded successfully.
+18:42:32 INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+18:42:32 INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+18:42:32 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+18:42:32 INFO  com.openclassrooms.safetynet.SafetynetApplication - Started SafetynetApplication in 3.127 seconds (process running for 3.651)
+18:43:05 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+18:43:05 INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+18:43:05 INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+18:43:05 INFO  com.openclassrooms.safetynet.controller.CommunityEmailController - Requête emails pour la ville Culver
+18:43:05 DEBUG com.openclassrooms.safetynet.controller.CommunityEmailController - Delegating to communityEmailService.getEmailsByCity(Culver)
+18:43:05 DEBUG com.openclassrooms.safetynet.service.CommunityEmailService - Récupération des emails pour la ville : Culver
+18:43:05 INFO  com.openclassrooms.safetynet.service.CommunityEmailService - 15 emails trouvés pour la ville Culver
+18:43:05 DEBUG com.openclassrooms.safetynet.controller.CommunityEmailController - communityEmailService returned 15 emails
+18:43:05 INFO  com.openclassrooms.safetynet.controller.CommunityEmailController - 15 emails trouvés pour la ville Culver
+18:43:05 ERROR com.openclassrooms.safetynet.exception.GlobalExceptionHandler - Unexpected error: No static resource favicon.ico.
+18:43:05 WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+18:43:37 INFO  org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 2 class path changes (1 addition, 1 deletion, 0 modifications)
+18:43:37 INFO  org.apache.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
